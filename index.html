@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dnyaneshwari | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <style>
+        :root {
+            --bg-dark: #080808;
+            --bg-second: #121212;
+            --main-color: #0ef;
+            --text-white: #fff;
+            --text-gray: #b0b0b0;
+        }
+
+        * {
+            margin: 0; padding: 0;
+            box-sizing: border-box;
+            text-decoration: none; border: none; outline: none;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body { background: var(--bg-dark); color: var(--text-white); overflow-x: hidden; }
+
+        header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1.2rem 9%; background: rgba(8, 8, 8, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; border-bottom: 1px solid rgba(0, 238, 255, 0.1);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-white); }
+        .logo span { color: var(--main-color); }
+
+        nav a { font-size: 1rem; color: var(--text-white); margin-left: 2rem; transition: .3s; font-weight: 500; }
+        nav a:hover { color: var(--main-color); }
+
+        section { min-height: 100vh; padding: 8rem 9% 2rem; }
+
+        /* Home Section */
+        .home { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+        .home-content h3 { font-size: 1.2rem; font-weight: 600; }
+        .home-content h1 { font-size: 3.2rem; font-weight: 700; margin: 0.3rem 0; }
+        
+        /* Sliding Text Styling */
+        .typing-text { color: var(--main-color); font-weight: 700; }
+
+        .home-content p { font-size: 0.95rem; margin: 1.5rem 0 2rem; max-width: 550px; line-height: 1.7; color: var(--text-gray); }
+
+        .social-media a {
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 40px; height: 40px; background: transparent;
+            border: 2px solid var(--main-color); border-radius: 50%;
+            font-size: 1.1rem; color: var(--main-color); margin: 0 1rem 2.5rem 0;
+            transition: .5s ease;
+        }
+        .social-media a:hover { background: var(--main-color); color: var(--bg-dark); box-shadow: 0 0 1rem var(--main-color); }
+
+        .btn {
+            display: inline-block; padding: 0.7rem 2rem;
+            background: var(--main-color); border-radius: 0.5rem;
+            font-size: 0.9rem; color: var(--bg-second); font-weight: 600;
+            transition: .5s ease; cursor: pointer; box-shadow: 0 0 0.5rem var(--main-color);
+        }
+        .btn:hover { box-shadow: none; transform: scale(1.05); }
+
+        /* Profile Photo Container */
+        .img-container {
+            width: 340px; height: 340px; background: var(--main-color);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex; justify-content: center; align-items: center;
+            animation: floatImage 4s ease-in-out infinite;
+        }
+        @keyframes floatImage { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .inner-hex {
+            width: 96%; height: 96%; background: var(--bg-dark);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            overflow: hidden;
+        }
+        .inner-hex img { width: 100%; height: 100%; object-fit: cover; }
+
+        .heading { text-align: center; font-size: 2.5rem; margin-bottom: 4rem; }
+        span.highlight { color: var(--main-color); }
+
+        /* Skills Grid */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .skill-box {
+            background: var(--bg-second); padding: 2rem; border-radius: 1rem;
+            border: 1px solid transparent; transition: 0.4s; text-align: center;
+        }
+        .skill-box:hover { border-color: var(--main-color); transform: translateY(-5px); }
+        .skill-box i { font-size: 2.5rem; color: var(--main-color); margin-bottom: 1rem; }
+        .skill-box h3 { font-size: 1.2rem; margin-bottom: 10px; }
+        .skill-box ul { list-style: none; color: var(--text-gray); font-size: 0.85rem; line-height: 1.8; }
+
+        /* Internship/Project Cards */
+        .card-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card {
+            background: var(--bg-second); padding: 2rem; border-radius: 15px;
+            border-left: 4px solid var(--main-color); transition: 0.3s;
+        }
+        .card:hover { background: #1a1a1a; }
+        .card h3 { color: var(--main-color); font-size: 1.2rem; margin-bottom: 5px; }
+        .card span { font-size: 0.8rem; color: #888; display: block; margin-bottom: 10px; }
+        .card p { font-size: 0.85rem; color: var(--text-gray); line-height: 1.5; }
+
+        /* Contact Section */
+        .contact form { max-width: 600px; margin: 0 auto; text-align: center; }
+        .contact input, .contact textarea {
+            width: 100%; padding: 1rem; background: var(--bg-second);
+            border-radius: 8px; color: white; margin-bottom: 1rem; border: 1px solid #333;
+        }
+
+        footer { text-align: center; padding: 2rem; border-top: 1px solid #222; color: #666; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .home { flex-direction: column-reverse; text-align: center; padding-top: 10rem; }
+            .home-content h1 { font-size: 2.5rem; }
+            .img-container { width: 280px; height: 280px; margin-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Dnyaneshwari<span>.M</span></a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#internships">Internships</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h3>Hello, It's Me</h3>
+            <h1>Dnyaneshwari Mane</h1>
+            <h3>I'm a <span class="typing-text"></span></h3>
+            
+            <p>B.Tech Computer Science student at Dnyanshree Institute. I build secure, scalable, and user-friendly digital solutions with a focus on Full Stack Java Development.</p>
+            
+            <div class="social-media">
+                <a href="https://www.linkedin.com/in/dnyaneshwari-mane-017309257" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://github.com/" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:dnyaneswarimane5278@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+            <a href="Dnyaneshwari_Mane_Resume.pdf" class="btn" target="_blank">Download Resume</a>
+        </div>
+
+        <div class="img-container">
+            <div class="inner-hex">
+                <img src="Dnyaneshwari_____Photo.jpg" alt="Dnyaneshwari Mane">
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="heading">Technical <span class="highlight">Expertise</span></h2>
+        <div class="skills-container">
+            <div class="skill-box">
+                <i class="fa-brands fa-java"></i>
+                <h3>Backend</h3>
+                <ul>
+                    <li>Java (Core & Advanced)</li>
+                    <li>Spring Boot & Hibernate</li>
+                    <li>REST APIs & JDBC</li>
+                </ul>
+            </div>
+            <div class="skill-box">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3>Frontend</h3>
+                <ul>
+                    <li>HTML5 & CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Bootstrap Framework</li>
+                </ul>
+            </div>
+            <div class="skill-box">
+                <i class="fa-solid fa-database"></i>
+                <h3>Database & Tools</h3>
+                <ul>
+                    <li>MySQL Database</li>
+                    <li>Git & GitHub</li>
+                    <li>Maven Build Tool</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="internships" style="background: var(--bg-second);">
+        <h2 class="heading">My <span class="highlight">Internships</span></h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Software Developer Intern</h3>
+                <span>Alivean Tech Solutions LLP | Dec 2024 - Apr 2025</span>
+                <p>Developing Java-based solutions and Spring Boot applications, optimizing backend performance and database connectivity.</p>
+            </div>
+            <div class="card">
+                <h3>Java Full Stack Intern</h3>
+                <span>EduSkills & AICTE | Apr - June 2025</span>
+                <p>Gained intensive knowledge of end-to-end development, focusing on backend integration and responsive UI design.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="heading">Latest <span class="highlight">Projects</span></h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>AI Chatbot Web App</h3>
+                <p>A full-stack project using Spring Boot and OpenRouter API to provide real-time, intelligent user responses.</p>
+            </div>
+            <div class="card">
+                <h3>Employee Management System</h3>
+                <p>Robust Java/SQL application designed for corporate tracking of attendance and employee data securely.</p>
+            </div>
+            <div class="card">
+                <h3>Eco Cart Assistant</h3>
+                <p>Built with Spring Boot and HTML/CSS to help users discover and shop for eco-friendly brands.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact" style="background: var(--bg-second);">
+        <h2 class="heading">Contact <span class="highlight">Me</span></h2>
+        <form action="#">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea rows="8" placeholder="Your Message" required></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Dnyaneshwari Mane | Full Stack Developer Portfolio</p>
+    </footer>
+
+    <script>
+        var typed = new Typed(".typing-text", {
+            strings: ["Java Developer", "Software Engineer", "Full Stack Developer", "Backend Developer", "Frontend Developer"],
+            typeSpeed: 100,
+            backSpeed: 60,
+            loop: true
+        });
+    </script>
+
+</body>
+</html>
