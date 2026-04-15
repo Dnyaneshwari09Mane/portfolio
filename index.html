@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dnyaneshwari | Full Stack Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <style>
         :root {
@@ -110,12 +110,33 @@
         .card span { font-size: 0.8rem; color: #888; display: block; margin-bottom: 10px; }
         .card p { font-size: 0.85rem; color: var(--text-gray); line-height: 1.5; }
 
-        /* Contact Section */
-        .contact form { max-width: 600px; margin: 0 auto; text-align: center; }
-        .contact input, .contact textarea {
-            width: 100%; padding: 1rem; background: var(--bg-second);
-            border-radius: 8px; color: white; margin-bottom: 1rem; border: 1px solid #333;
-        }
+       .contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 10px 0;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: white;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: var(--main-color);
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.contact-info {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--text-gray);
+}
 
         footer { text-align: center; padding: 2rem; border-top: 1px solid #222; color: #666; font-size: 0.8rem; }
 
@@ -133,31 +154,153 @@
     color: var(--main-color);
 }
 
+/* ===== PREMIUM SIDEBAR ===== */
+
 #navbar {
     position: fixed;
     top: 0;
-    right: -220px;   /* hidden on right */
-    transition: right 0.3s ease;
-    width: 200px;
+    right: -280px;
+    width: 280px;
     height: 100%;
-    background: #000;
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
     display: flex;
     flex-direction: column;
-    padding-top: 80px;
-    transition: 0.3s;
+    align-items: flex-start;   /* IMPORTANT */
+    justify-content: flex-start; /* IMPORTANT */
+
+    padding: 90px 30px;  /* pushes below header */
+    transition: 0.4s ease-in-out;
     z-index: 999;
 }
 
 #navbar.active {
-    right: 0;   /* slide from right */
+    right: 0;
 }
 
 /* LINKS */
 #navbar a {
-    margin: 15px 0;
-    font-size: 1rem;
+    width: 100%;
+    font-size: 1.2rem;
     color: white;
-    text-align: center;
+    margin: 5px 0;
+    padding: 12px 15px;
+    border-radius: 8px;
+    text-align: left;   /* IMPORTANT */
+    transition: 0.3s;
+}
+
+#navbar a:hover {
+    background: rgba(0, 238, 255, 0.15);
+    color: var(--main-color);
+}
+
+/* ACTIVE LINK STYLE (like your Home highlight) */
+#navbar a.active-link {
+    background: rgba(0, 238, 255, 0.15);
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+#navbar a:first-child {
+    background: rgba(0, 238, 255, 0.2);
+    color: var(--main-color);
+}
+
+/* --- Updated About & Experience Styling --- */
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-text {
+    text-align: left;
+    color: var(--text-gray);
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+}
+
+/* Project Chips / Experience Badges */
+.exp-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 1.5rem 0;
+}
+
+.chip {
+    background: rgba(0, 238, 255, 0.05);
+    border: 1px solid rgba(0, 238, 255, 0.2);
+    color: var(--main-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.chip:hover {
+    background: var(--main-color);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--main-color);
+    transform: translateY(-3px);
+}
+
+/* Button Group */
+.btn-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 2rem;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 0.7rem 2rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--main-color);
+    font-weight: 600;
+    transition: .5s ease;
+}
+
+.btn-outline:hover {
+    background: var(--main-color);
+    color: var(--bg-second);
+}
+
+/* Education Timeline (Keeping your liked style) */
+.education-container { position: relative; padding-left: 20px; }
+.education-container::before {
+    content: ''; position: absolute; left: 0; top: 0; width: 2px;
+    height: 100%; background: var(--main-color); box-shadow: 0 0 10px var(--main-color);
+}
+.edu-item { margin-bottom: 2rem; position: relative; padding-left: 30px; }
+.edu-dot {
+    position: absolute; left: -5px; top: 5px; width: 12px; height: 12px;
+    background: var(--bg-dark); border: 2px solid var(--main-color);
+    border-radius: 50%; box-shadow: 0 0 8px var(--main-color); z-index: 2;
+}
+.edu-card {
+    background: rgba(255, 255, 255, 0.05); padding: 1.2rem; border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.3s ease; text-align: left;
+}
+.edu-card:hover { transform: translateX(10px); border-color: var(--main-color); }
+
+@media (max-width: 991px) { .about-container { grid-template-columns: 1fr; } }
+
+/* Responsive */
+@media (max-width: 991px) {
+    .about-container { grid-template-columns: 1fr; gap: 2rem; }
 }
 
 </style>
@@ -167,15 +310,20 @@
   <header>
     <a href="#" class="logo">Dnyaneshwari<span>.M</span></a>
 
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="menu-icon" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars" id="menuIcon"></i>
+</div>
 
-    <nav id="navbar">
-        <a href="#home">Home</a>
-        <a href="#skills">Skills</a>
-        <a href="#internships">Internships</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
+   <nav id="navbar">
+    <a href="#home" onclick="toggleMenu()">Home</a>
+     <a href="#about">About</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+   
+<a href="#services">Services</a>
+    <a href="#internships" onclick="toggleMenu()">Internships</a>
+    <a href="#projects" onclick="toggleMenu()">Projects</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+</nav>
 </header>
 
     <section class="home" id="home">
@@ -202,38 +350,212 @@
         </div>
     </section>
 
-    <section id="skills">
-        <h2 class="heading">Technical <span class="highlight">Expertise</span></h2>
-        <div class="skills-container">
-            <div class="skill-box">
-                <i class="fa-brands fa-java"></i>
-                <h3>Backend</h3>
-                <ul>
-                    <li>Java (Core & Advanced)</li>
-                    <li>Spring Boot & Hibernate</li>
-                    <li>REST APIs & JDBC</li>
-                </ul>
+
+
+<section id="about">
+    <h2 class="heading">About <span class="highlight">Me</span></h2>
+
+    <div class="about-container">
+        <div class="about-text">
+            <h3>Who I Am</h3>
+            <p>
+                I am a passionate Full Stack Developer with strong expertise in Java, Spring Boot,
+                and modern web technologies. I love building scalable, secure, and user-friendly applications.
+            </p>
+
+            <p style="margin-top: 1rem; font-weight: 600; color: var(--text-white);">
+                Hands-on Experience in:
+            </p>
+            
+            <div class="exp-chips">
+                <span class="chip">AI Chatbots</span>
+                <span class="chip">Employee Management Systems</span>
+                <span class="chip">Sustainable Shopping Platforms</span>
+                <span class="chip">Full Stack Development</span>
             </div>
-            <div class="skill-box">
-                <i class="fa-solid fa-laptop-code"></i>
-                <h3>Frontend</h3>
-                <ul>
-                    <li>HTML5 & CSS3</li>
-                    <li>JavaScript (ES6+)</li>
-                    <li>Bootstrap Framework</li>
-                </ul>
-            </div>
-            <div class="skill-box">
-                <i class="fa-solid fa-database"></i>
-                <h3>Database & Tools</h3>
-                <ul>
-                    <li>MySQL Database</li>
-                    <li>Git & GitHub</li>
-                    <li>Maven Build Tool</li>
-                </ul>
+            
+            <div class="btn-group">
+                <a href="resume.pdf" class="btn" target="_blank">Download CV</a>
+                <a href="#contact" class="btn-outline">Hire Me</a>
             </div>
         </div>
-    </section>
+
+        <div class="education-container">
+            <h3 style="text-align: left; margin-bottom: 1.5rem; font-size: 1.5rem;">Education</h3>
+            
+           
+    
+    <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-card">
+            <span class="year" style="font-weight:700; font-size:0.8rem;">2022-2026 (Pursuing)</span>
+            <h4 style="color:var(--main-color); margin: 5px 0;">B.E. in Computer Science</h4>
+            <p style="font-size:0.85rem;">Dnyanshree Institute Of Engineering and Technology, Satara</p>
+            <p style="font-size:0.85rem; margin-top:5px; color: var(--text-gray);">
+                Deepening knowledge in Data Structures, Java Backend, and Database Management.<br>
+                Active participant in technical workshops and coding hackathons.
+            </p>
+        </div>
+    </div>
+
+    <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-card">
+            <span class="year" style="font-weight:700; font-size:0.8rem;">2022 (Completed)</span>
+            <h4 style="color:var(--main-color); margin: 5px 0;">HSC</h4>
+            <p style="font-size:0.85rem;">Yashwantrao Chavan Institute Of Science, Satara</p>
+            <p style="font-size:0.85rem; margin-top:5px; color: var(--text-gray);">
+                Built a strong analytical foundation in Mathematics and Physics.<br>
+                Developed initial interest in logic-based problem solving and technology.
+            </p>
+        </div>
+    </div>
+
+    <div class="edu-item">
+        <div class="edu-dot"></div>
+        <div class="edu-card">
+            <span class="year" style="font-weight:700; font-size:0.8rem;">2020 (Completed)</span>
+            <h4 style="color:var(--main-color); margin: 5px 0;">SSC</h4>
+            <p style="font-size:0.85rem;">Ajinkytara Madhymik Vidyamandir, Shahunagar Shendre</p>
+            <p style="font-size:0.85rem; margin-top:5px; color: var(--text-gray);">
+                Consistently ranked as a top performer in school academics.<br>
+                Represented school in various cultural and science exhibitions.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+   <section id="skills">
+    <h2 class="heading">Technical <span class="highlight">Expertise</span></h2>
+
+    <div class="skills-container">
+
+        <!-- Backend -->
+        <div class="skill-box">
+            <i class="fa-brands fa-java"></i>
+            <h3>Backend</h3>
+            <ul>
+                <li>Java (Core & Advanced)</li>
+                <li>Spring Boot & Hibernate</li>
+                <li>REST APIs & JDBC</li>
+            </ul>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-box">
+            <i class="fa-solid fa-laptop-code"></i>
+            <h3>Frontend</h3>
+            <ul>
+                <li>HTML5, CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>Bootstrap</li>
+            </ul>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-box">
+            <i class="fa-solid fa-database"></i>
+            <h3>Database & Tools</h3>
+            <ul>
+                <li>MySQL</li>
+                <li>Git & GitHub</li>
+                <li>Maven</li>
+            </ul>
+        </div>
+
+        <!-- NEW 1 -->
+        <div class="skill-box">
+            <i class="fa-solid fa-code"></i>
+            <h3>Programming</h3>
+            <ul>
+                <li>Java</li>
+                <li>SQL</li>
+                <li>JavaScript</li>
+            </ul>
+        </div>
+
+        <!-- NEW 2 -->
+        <div class="skill-box">
+            <i class="fa-solid fa-layer-group"></i>
+            <h3>Full Stack</h3>
+            <ul>
+                <li>Frontend + Backend Integration</li>
+                <li>API Development</li>
+                <li>CRUD Applications</li>
+            </ul>
+        </div>
+
+        <!-- NEW 3 -->
+        <div class="skill-box">
+            <i class="fa-solid fa-gears"></i>
+            <h3>Tools & Workflow</h3>
+            <ul>
+                <li>VS Code</li>
+                <li>Git Version Control</li>
+                <li>Debugging & Testing</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+<section id="services">
+    <h2 class="heading">My <span class="highlight">Services</span></h2>
+
+    <div class="skills-container">
+        <div class="skill-box">
+            <i class="fa-solid fa-code"></i>
+            <h3>Web Development</h3>
+            <p>Responsive and modern websites using HTML, CSS, JavaScript, and frameworks.</p>
+        </div>
+
+        <div class="skill-box">
+            <i class="fa-solid fa-server"></i>
+            <h3>Backend Development</h3>
+            <p>Robust APIs and backend systems using Java, Spring Boot, and MySQL.</p>
+        </div>
+
+        <div class="skill-box">
+            <i class="fa-solid fa-brain"></i>
+            <h3>AI Integration</h3>
+            <p>Integrating AI chatbots and intelligent systems into web applications.</p>
+        </div>
+
+        <div class="skill-box">
+            <i class="fa-solid fa-database"></i>
+            <h3>Database Design</h3>
+            <p>Efficient database design and management using MySQL and MongoDB.</p>
+        </div>
+    </div>
+</section>
 
     <section id="internships" style="background: var(--bg-second);">
         <h2 class="heading">My <span class="highlight">Internships</span></h2>
@@ -263,21 +585,32 @@
                 <p>Robust Java/SQL application designed for corporate tracking of attendance and employee data securely.</p>
             </div>
             <div class="card">
-                <h3>Eco Cart Assistant</h3>
+                <h3>Eco Cart Sustainable Shopping  Assistant</h3>
                 <p>Built with Spring Boot and HTML/CSS to help users discover and shop for eco-friendly brands.</p>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact" style="background: var(--bg-second);">
-        <h2 class="heading">Contact <span class="highlight">Me</span></h2>
-        <form action="#">
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email Address" required>
-            <textarea rows="8" placeholder="Your Message" required></textarea>
-            <input type="submit" value="Send Message" class="btn">
-        </form>
-    </section>
+    <section id="contact" class="contact">
+    <h2 class="heading">Contact <span class="highlight">Me</span></h2>
+
+   <form onsubmit="sendMessage(event)">
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <textarea rows="6" placeholder="Your Message" required></textarea>
+
+    <button type="submit" class="btn">Send Message</button>
+</form>
+
+<p id="successMsg" style="display:none; color: #00eeff; margin-top:10px;">
+    ✅ Message Sent Successfully!
+</p>
+
+    <div class="contact-info">
+        <p><i class="fa-solid fa-envelope"></i> dnyaneswarimane5278@gmail.com</p>
+        <p><i class="fa-solid fa-phone"></i> +91 9309971615</p>
+    </div>
+</section>
 
     <footer>
         <p>&copy; 2026 Dnyaneshwari Mane | Full Stack Developer Portfolio</p>
@@ -292,7 +625,19 @@ var typed = new Typed(".typing-text", {
 });
 
 function toggleMenu() {
-    document.getElementById("navbar").classList.toggle("active");
+    const navbar = document.getElementById("navbar");
+    const icon = document.getElementById("menuIcon");
+
+    navbar.classList.toggle("active");
+
+    // ICON CHANGE
+    if (navbar.classList.contains("active")) {
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-times");
+    } else {
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-bars");
+    }
 }
 
 /* CLOSE WHEN CLICK OUTSIDE */
@@ -311,6 +656,21 @@ document.querySelectorAll("#navbar a").forEach(link => {
         document.getElementById("navbar").classList.remove("active");
     });
 });
+
+function sendMessage(event) {
+    event.preventDefault();
+
+    let msg = document.getElementById("successMsg");
+
+    msg.style.display = "block";
+
+    // hide after 3 seconds
+    setTimeout(() => {
+        msg.style.display = "none";
+    }, 3000);
+
+    event.target.reset();
+}
 </script>
 
 </body>
