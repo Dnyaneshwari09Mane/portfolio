@@ -156,28 +156,63 @@
 
 /* ===== PREMIUM SIDEBAR ===== */
 
-#navbar {
-    position: fixed;
-    top: 0;
-    right: -280px;
-    width: 280px;
-    height: 100%;
-    background: rgba(15, 15, 15, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+/* ===== ADD BELOW THIS ===== */
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;   /* IMPORTANT */
-    justify-content: flex-start; /* IMPORTANT */
+/* DESKTOP NAVBAR */
+@media (min-width: 769px) {
 
-    padding: 90px 30px;  /* pushes below header */
-    transition: 0.4s ease-in-out;
-    z-index: 999;
+    #navbar {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        backdrop-filter: none;
+
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        padding: 0;
+        right: 0;
+    }
+
+    #navbar a {
+        margin-left: 2rem;
+        padding: 0;
+    }
+
+    .menu-icon {
+        display: none;
+    }
 }
 
-#navbar.active {
-    right: 0;
+
+/* MOBILE SIDEBAR */
+@media (max-width: 768px) {
+
+    .menu-icon {
+        display: block;
+    }
+
+    #navbar {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        width: 280px;
+        height: 100%;
+
+        background: rgba(15, 15, 15, 0.6);
+        backdrop-filter: blur(15px);
+
+        flex-direction: column;
+        padding: 90px 30px;
+
+        transition: 0.4s;
+    }
+
+    #navbar.active {
+        right: 0;
+    }
 }
 
 /* LINKS */
